@@ -1,44 +1,44 @@
 import { createGlobalTheme, style } from "@vanilla-extract/css";
 
-createGlobalTheme(
-    "root",
+export const vars = createGlobalTheme(
+    ":root",
     {
         color: {
-            primary: "#ffa726",
-            primaryDark: "#f57c00",
-            primaryLight: "#ffd740",
-            secondary: "#64b5f6",
-            secondaryDark: "#1e88e5",
-            secondaryLight: "#9be7ff",
-            list: "rgb(255, 236, 240)",
-            task: "rgb(255, 245, 248)",
-            taskHover: "rgb(255, 236, 240)",
-            brightText: "#ffffff",
-            darkText: "#000000",
-            secondaryText: "#666666",
-            disabled: "#bdbdbd",
-            divider: "#e0e0e0",
-            background: "#fafafa",
-            surface: "#ffffff",
-            error: "#d32f2f",
-            onPrimary: "#000000",
-            onSecondary: "#000000",
-            onSurface: "#000000",
-            onError: "#ffffff",
-            border: "#e0e0e0",
-            secondaryDarkText: "#212121",
-            secondaryLightText: "#ffffff",
-            secondaryDarkTextHover: "#1565c0",
-            secondaryLightTextHover: "#0039cb",
-            selectedTab: "#e0e0e0",
-            updateButton: "#00796b",
-            updateButtonHover: "#004c40",
-            deleteButton: "#ef5350",
-            deleteButtonHover: "#e53935",
+            primary: "#FFB5A7",           // Warm pastel coral
+            primaryDark: "#E8A19B",       // Darker pastel coral
+            primaryLight: "#FFD1C9",      // Light pastel coral
+            secondary: "#F7D1BA",         // Warm pastel peach
+            secondaryDark: "#E5BFA8",     // Darker pastel peach  
+            secondaryLight: "#FDE2D4",    // Light pastel peach
+            list: "#FFF1E6",             // Soft cream
+            task: "#FFF5EB",             // Lighter cream
+            taskHover: "#FFE8D6",        // Warm cream hover
+            brightText: "#ffffff",        // Keep white for contrast
+            darkText: "#4A3B38",         // Warm dark brown
+            secondaryText: "#8B7355",     // Warm medium brown
+            disabled: "#D5C4B9",          // Muted warm gray
+            divider: "#EDE0D4",          // Light warm divider
+            background: "#FFF9F5",        // Very light warm background
+            surface: "#ffffff",           // Keep white
+            error: "#E88D83",            // Pastel error red
+            onPrimary: "#4A3B38",        // Dark brown on primary
+            onSecondary: "#4A3B38",      // Dark brown on secondary
+            onSurface: "#4A3B38",        // Dark brown on surface
+            onError: "#ffffff",          // White on error
+            border: "#EDE0D4",           // Light warm border
+            secondaryDarkText: "#4A3B38", // Dark warm text
+            secondaryLightText: "#ffffff", // White text
+            secondaryDarkTextHover: "#6B5750", // Darker hover
+            secondaryLightTextHover: "#FFF9F5", // Light hover
+            selectedTab: "#EDE0D4",       // Selected tab background
+            updateButton: "#A7C4BC",      // Pastel sage green
+            updateButtonHover: "#96B3AB",  // Darker sage green
+            deleteButton: "#E6A6A1",      // Pastel red
+            deleteButtonHover: "#D49590",  // Darker pastel red
         },
         fontSizing: {
             T1: "32px",
-            T2: "24px",
+            T2: "24px", 
             T3: "18px",
             T4: "14px",
             P1: "16px",
@@ -76,7 +76,7 @@ export const appContainer = style(
 
 export const button = style(
     {
-        backgroundColor: "red",
+       
     }
 )
 export const board = style(
