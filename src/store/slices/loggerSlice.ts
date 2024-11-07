@@ -7,7 +7,12 @@ type TLoggerState = {
 };
 
 const initialState: TLoggerState = {
-    logArray: [],
+    logArray: [{
+        logId: "1",
+        logAuthor: "admin",
+        logMessage: "게시판 생성",
+        logDate: "2024-01-01",
+    }],
 };
 
 const loggerSlice = createSlice({
@@ -16,7 +21,7 @@ const loggerSlice = createSlice({
     reducers : {
         createLog: (state, {payload}: PayloadAction<ILogItem>) => {
             state.logArray.push(payload)
-        }
+        },
     },
 });
 

@@ -42,7 +42,7 @@ const DropDownForm = ({
             logId: v4(),
             logMessage: `${text} 리스트 생성`,
             logAuthor: "user",
-            logDate: new Date().toISOString(),
+            logDate: new Date().toISOString().split('.')[0],
           })
         );
       } else {
@@ -63,7 +63,7 @@ const DropDownForm = ({
             logId: v4(),
             logMessage: `${text} 할 일 생성`,
             logAuthor: "user",
-            logDate: new Date().toISOString(),
+            logDate: new Date().toISOString().split('.')[0],
           })
         );
       }

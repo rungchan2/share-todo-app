@@ -26,8 +26,21 @@ type TCreateTaskAction = {
   listId: string;
 };
 
+type TDeleteTaskAction = {
+  taskId: string;
+  boardId: string;
+  listId: string;
+};
+
+type TUpdateTaskAction = {
+  task: ITask;
+  boardId: string;
+  listId: string;
+};
+
 const initialState: TboardState = {
   modalActive: false,
+  
   boardArray: [
     {
       boardId: "board-0",
@@ -116,6 +129,49 @@ const boardSlice = createSlice({
           : b
       );
     },
+    deleteBoard : (state, { payload }: PayloadAction<string>) => {
+      if (state.boardArray.length > 1) {
+        state.boardArray = state.boardArray.filter((board) => board.boardId !== payload);
+      } else {
+        alert("게시판은 최소 하나 이상 존재해야 합니다.")
+      }
+    },
+    deleteTask: (state, { payload }: PayloadAction<TDeleteTaskAction>) => {
+      state.boardArray = state.boardArray.map((b) =>
+        b.boardId === payload.boardId
+          ? {
+              ...b,
+              lists: b.lists.map((l) =>
+                l.listId === payload.listId
+                  ? {
+                      ...l,
+                      tasks: l.tasks.filter((t) => t.taskId !== payload.taskId),
+                    }
+                  : l
+              ),
+            }
+          : b
+      );
+    },
+    updateTask: (state, { payload }: PayloadAction<TUpdateTaskAction>) => {
+      state.boardArray = state.boardArray.map((b) =>
+        b.boardId === payload.boardId
+          ? {
+              ...b,
+              lists: b.lists.map((l) =>
+                l.listId === payload.listId
+                  ? {
+                      ...l,
+                      tasks: l.tasks.map((t) =>
+                        t.taskId === payload.task.taskId ? payload.task : t
+                      ),
+                    }
+                  : l
+              ),
+            }
+          : b
+      );
+    },
   },
 });
 
@@ -125,5 +181,8 @@ export const {
   setModalActive,
   createList,
   createTask,
+  deleteTask,
+  updateTask,
+  deleteBoard,
 } = boardSlice.actions;
 export const boardReducer = boardSlice.reducer;

@@ -1,7 +1,14 @@
-import React from 'react'
+import { ILogItem } from '../../types'
+import { logItem, logMessage, logDate, logAuthor } from './LogItem.css'
 
-export const LogItem = () => {
+const LogItem = ({log}: {log: ILogItem}) => {
   return (
-    <div>LogItem</div>
+    <div className={logItem}>
+      <p className={logMessage}>{log.logMessage}</p>
+      <p className={logDate}>{log.logDate}</p>
+      <p className={logAuthor}>{log.logAuthor}</p>
+    </div>
   )
 }
+
+export default LogItem

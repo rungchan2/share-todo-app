@@ -33,7 +33,8 @@ const modalSlice = createSlice({
       state.boardId = payload.boardId
       state.listId = payload.listId
       state.task = payload.task
-    }
+    },
+    
   },
 });
 

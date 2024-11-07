@@ -28,7 +28,7 @@ const List = ({
       logId: v4(),
       logAuthor: 'user',
       logMessage: `List ${list.listName} deleted`,
-      logDate: new Date().toISOString()
+      logDate: new Date().toISOString().split('.')[0]
     }))
   }
 

@@ -24,7 +24,7 @@ const SideForm:FC<TSideFormProps> = ({
   const handleClick = (e: React.MouseEvent<SVGElement>) => {
     e.preventDefault()
     dispatch(createBoard({board: {boardId: uuidv4(), boardName: inputText, lists: []}}))
-    dispatch(createLog({logId: uuidv4(), logAuthor: "user", logMessage: `게시판 이름: ${inputText} 생성`, logDate: new Date().toISOString()}))
+    dispatch(createLog({logId: uuidv4(), logAuthor: "user", logMessage: `게시판 이름: ${inputText} 생성`, logDate: new Date().toISOString().split('.')[0]}))
   }
 
   return (

@@ -74,9 +74,11 @@ export const appContainer = style(
     }
 )
 
-export const button = style(
+export const buttonContainer = style(
     {
-       
+        display: "flex",
+        flexDirection: "row",
+        gap: "16px",
     }
 )
 export const board = style(
@@ -84,5 +86,22 @@ export const board = style(
         display: "flex",
         flexDirection: "row",
         height: "100%",
+    }
+)
+
+export const button = style(
+    {
+        backgroundColor: vars.color.primary,
+        border: "none",
+        borderRadius: "4px",
+        padding: "8px 16px",
+        cursor: "pointer",
+        fontSize: vars.fontSizing.T4,
+
+        selectors: {
+            "&:hover": {
+                backgroundColor: vars.color.primaryDark,
+            },
+        },
     }
 )
