@@ -14,7 +14,6 @@ const Task: React.FC<TTaskProps> = ({
   taskName,
   taskId,
   taskDescription,
-  boardId,
   index,
 }) => {
   return (
