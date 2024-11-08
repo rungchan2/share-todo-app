@@ -1,5 +1,5 @@
 import List from './List'
-import { IList } from '../../types'
+import { IList } from '../../types/types.ts'
 import ActionButton from '../Buttons/ActionButton'
 import { listsContainer } from './ListsContainer.css.ts'
 

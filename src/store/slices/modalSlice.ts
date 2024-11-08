@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ITask } from "../../types";
+import { ITask } from "../../types/types";
 
 type TModalState = {
   boardId: string;

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ILogItem } from "../../types";
+import { ILogItem } from "../../types/types";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 type TLoggerState = {

@@ -10,6 +10,8 @@ import { useTypedDispatch } from './hooks/redux'
 import { deleteBoard } from './store/slices/boardSlice.ts'
 import { createLog } from './store/slices/loggerSlice.ts'
 import { v4 } from 'uuid'
+import { DragDropContext } from 'react-beautiful-dnd';
+import { sortTask } from './store/slices/boardSlice.ts';
 
 function App() {
   const [activeBoardId, setActiveBoardId] = useState<string>('board-0')
@@ -34,6 +36,31 @@ function App() {
     }
   }
 
+  const onDragEnd = (result: any) => {
+    console.log(result)
+    const {destination, source, draggableId} = result
+
+    const sourceList = activeBoard.lists.filter(list => list.listId === source.droppableId)[0]
+
+    console.log(sourceList)
+
+    dispatch(sortTask({
+      boardIndex: boardArray.findIndex(board => board.boardId === activeBoardId),
+      droppableIdStart: source.droppableId,
+      droppableIdEnd: destination.droppableId,
+      droppableIndexStart: source.index,
+      droppableIndexEnd: destination.index,
+      draggableId: draggableId
+
+    }))
+    dispatch(createLog({
+      logMessage: `게시판 ${activeBoard.lists.filter(list => list.listId === source.droppableId)[0].listName} 내 리스트 순서 변경`,
+      logDate: new Date().toLocaleString('ko-KR').split('.')[0],
+      logAuthor: 'admin',
+      logId: v4()
+    }))
+  }
+
   return (
    
     <>
@@ -47,7 +74,9 @@ function App() {
           />
         </div>
         <div className={board}>
-          <ListsContainer boardId={activeBoardId} lists={activeBoard.lists}/>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <ListsContainer boardId={activeBoardId} lists={activeBoard.lists}/>
+          </DragDropContext>
         </div>
         <div className = {buttonContainer}>
           <button className = {button}

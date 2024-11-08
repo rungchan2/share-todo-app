@@ -31,6 +31,13 @@ export const addButton = style({
     }
 })
 
+export const logoutButton = style({
+    color: vars.color.brightText,
+    fontSize: vars.fontSizing.T2,
+    marginLeft: vars.spacing.S1,
+    cursor: 'pointer',
+})
+
 export const boardItem = style({
     color: vars.color.brightText,
     fontSize: vars.fontSizing.T3,

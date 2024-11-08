@@ -1,4 +1,4 @@
-import { ILogItem } from '../../types'
+import { ILogItem } from '../../types/types'
 import { logItem, logMessage, logDate, logAuthor } from './LogItem.css'
 
 const LogItem = ({log}: {log: ILogItem}) => {

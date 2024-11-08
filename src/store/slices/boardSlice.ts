@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IBoard, ITask, IList } from "../../types";
+import { IBoard, ITask, IList } from "../../types/types";
 
 type TboardState = {
   modalActive: boolean;
@@ -37,6 +37,15 @@ type TUpdateTaskAction = {
   boardId: string;
   listId: string;
 };
+
+type TSortTaskAction = {
+  boardIndex: number;
+  droppableIdStart: string;
+  droppableIdEnd: string;
+  droppableIndexStart: number;
+  droppableIndexEnd: number;
+  draggableId: string;
+}
 
 const initialState: TboardState = {
   modalActive: false,
@@ -172,6 +181,21 @@ const boardSlice = createSlice({
           : b
       );
     },
+    sortTask: (state, { payload }: PayloadAction<TSortTaskAction>) => {
+      if (payload.droppableIdStart === payload.droppableIdEnd) {
+        const list = state.boardArray[payload.boardIndex].lists.filter(list => list.listId === payload.droppableIdStart)[0]
+
+        const deletedTaskArray = list.tasks.splice(payload.droppableIndexStart, 1)
+        list?.tasks.splice(payload.droppableIndexEnd, 0, ...deletedTaskArray)
+
+      } else {
+        const listStart = state.boardArray[payload.boardIndex].lists.find(list => list.listId === payload.droppableIdStart)
+        const listEnd = state.boardArray[payload.boardIndex].lists.find(list => list.listId === payload.droppableIdEnd)
+
+        const deletedTaskArray = listStart!.tasks.splice(payload.droppableIndexStart, 1)
+        listEnd!.tasks.splice(payload.droppableIndexEnd, 0, ...deletedTaskArray)
+      }
+    }
   },
 });
 
@@ -184,5 +208,6 @@ export const {
   deleteTask,
   updateTask,
   deleteBoard,
+  sortTask,
 } = boardSlice.actions;
 export const boardReducer = boardSlice.reducer;

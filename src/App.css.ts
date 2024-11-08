@@ -76,6 +76,10 @@ export const appContainer = style(
 
 export const buttonContainer = style(
     {
+        position: "absolute",
+        bottom: "12px",
+        left: "12px",
+        width: "100%",
         display: "flex",
         flexDirection: "row",
         gap: "16px",
